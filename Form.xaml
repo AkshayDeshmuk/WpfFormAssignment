@@ -1,0 +1,83 @@
+﻿<Window x:Class="WpfApp1.Form"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Form" Height="522" Width="1221" Loaded="Window_Loaded">
+    <DockPanel>
+        <Image DockPanel.Dock="Right" Source="/image/logo.jfif" Width="150" Height="209" RenderTransformOrigin="1.289,0.972"></Image>
+        <TextBlock DockPanel.Dock="Top" Background="Purple" Foreground="White" FontSize="22">
+            <Run Text="{Binding RecordMode}" />
+            <Run Text="User Details" />
+        </TextBlock>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical" Margin="5,5,5,5" >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5,5,5,5" >
+                <Button x:Name="ButtonFirst" Background="#FF95A7C8" Foreground="#FFF4F3F3" Width="100" Margin="10,0,10,0" 
+                        FontSize="20" IsEnabled="{Binding InputIsReadOnly}" Click="ButtonFirst_Click">First</Button>
+                <Button x:Name="ButtonPrevious" Background="#FF95A7C8" Foreground="#FFF4F3F3" Width="100" Margin="10,0,10,0" 
+                        FontSize="20" IsEnabled="{Binding InputIsReadOnly}" Click="ButtonPrevious_Click">Previous</Button>
+                <Button x:Name="ButtonNext" Background="#FF95A7C8" Foreground="#FFF4F3F3" Width="100" Margin="10,0,10,0" 
+                        FontSize="20" IsEnabled="{Binding InputIsReadOnly}" Click="ButtonNext_Click">Next</Button>
+                <Button x:Name="ButtonLast" Background="#FF95A7C8" Foreground="#FFF4F3F3" Width="100" Margin="10,0,10,0" 
+                        FontSize="20" IsEnabled="{Binding InputIsReadOnly}" Click="ButtonLast_Click">Last</Button>
+                <Button x:Name="ButtonInsert" Background="#FF95A7C8" Foreground="#FFF4F3F3" Width="100" Margin="10,0,10,0" 
+                        FontSize="20" IsEnabled="{Binding InputIsReadOnly}" Click="ButtonInsert_Click">Insert</Button>
+                <Button x:Name="ButtonUpdate" Background="#FF95A7C8" Foreground="#FFF4F3F3" Width="100" Margin="10,0,10,0" 
+                        FontSize="20" IsEnabled="{Binding InputIsReadOnly}" Click="ButtonUpdate_Click">Update</Button>
+                <Button x:Name="ButtonSave" Background="#FF95A7C8" Foreground="#FFF4F3F3" Width="100" Margin="10,0,10,0" 
+                        FontSize="20" IsEnabled="{Binding InputIsEditable}" Click="ButtonSave_Click">Save</Button>
+                <Button x:Name="ButtonCancel" Background="#FF95A7C8" Foreground="#FFF4F3F3" Width="100" Margin="10,0,10,0" 
+                        FontSize="20" IsEnabled="{Binding InputIsEditable}" Click="ButtonCancel_Click">Cancel</Button>
+            </StackPanel>
+            <StatusBar FontSize="14">
+                <TextBlock FontFamily="Arial Narrow" FontWeight="Bold">
+                    <Run Text="Record " />
+                    <Run Text="{Binding Path=RecordNumber, Mode=OneWay}" />
+                    <Run Text="/" />
+                    <Run Text="{Binding Path=TotalRecords, Mode=OneWay}" />
+                    <!--<Run Text="TextBoxName.IsReadOnly=" />
+                    <Run Text="{Binding Path=IsReadOnly, ElementName=TextBoxName}" />
+                    <Run Text="InputIsReadOnly=" />
+                    <Run Text="{Binding InputIsReadOnly, Mode=OneWay}" />
+                    <Run Text="RecordMode=" />
+                    <Run Text="{Binding RecordMode, Mode=OneWay}" />-->
+                </TextBlock>
+            </StatusBar>
+        </StackPanel>
+        <Grid Height="182" Width="780">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Username:"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Password:"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Age:"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Email:"/>
+
+            <TextBox x:Name="TextBoxUsername" Grid.Row="0" Grid.Column="1" Margin="3" Height="30" 
+                     IsReadOnly="{Binding InputIsReadOnly, Mode=OneWay}"
+                     Text="{Binding User.Username}" />
+            <TextBox x:Name="TextBoxPassword" Grid.Row="1" Grid.Column="1" Margin="3" Height="30" 
+                     IsReadOnly="{Binding InputIsReadOnly, Mode=OneWay}"                     
+                     Text="{Binding User.Password}" />
+            <TextBox x:Name="TextBoxAge" Grid.Row="2" Grid.Column="1" Margin="3" Height="30"
+                     IsReadOnly="{Binding InputIsReadOnly, Mode=OneWay}"                     
+                     Text="{Binding User.Age}" />
+            <TextBox x:Name="TextBoxEmail" Grid.Row="3" Grid.Column="1" Margin="3" Height="30"
+                     IsReadOnly="{Binding InputIsReadOnly, Mode=OneWay}"                     
+                     Text="{Binding User.Email}" />
+        </Grid>
+    </DockPanel>
+
+
+</Window>
